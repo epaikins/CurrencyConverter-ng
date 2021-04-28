@@ -1,0 +1,19 @@
+<h2></h2>
+
+<form [formGroup]="convertForm" (ngSubmit)="onConvert()">
+  <input type="text" placeholder="{{ convertForm.value.currencyFrom.slice(0,3) }}" disabled>
+  <input type="number" formControlName="value">
+  <input type="submit" value="convert">
+  <!-- [(ngModel)]="selectedCurrencyFrom" -->
+  <select name="currency" id="currencyFrom" formControlName="currencyFrom">
+    <option value="">Select Currency</option>
+    <option *ngFor="let currency of currencies">{{ currency.id}} -
+      {{ currency.currencyName}}</option>
+  </select>
+  <select name="currency" id="currencyTo" formControlName="currencyTo">
+    <option value="">Select Currency</option>
+    <option *ngFor="let currency of currencies">{{ currency.id}} -
+      {{ currency.currencyName}}</option>
+  </select>
+</form>
+<h2>{{ convertedSymbol }} {{ convertedCurrency }}</h2>
